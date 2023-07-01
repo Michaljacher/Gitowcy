@@ -1,0 +1,56 @@
+#Zadanie 1
+┌──(kali㉿kali)-[~]
+└─$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:78:ff:ce brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.102/24 brd 192.168.56.255 scope global dynamic noprefixroute eth0
+       valid_lft 576sec preferred_lft 576sec
+    inet6 fe80::a00:27ff:fe78:ffce/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+
+
+#Zadanie 2
+──(kali㉿kali)-[~]
+└─$ nmap -sn 192.168.56.0/24
+Starting Nmap 7.92 ( https://nmap.org ) at 2023-07-01 05:16 EDT
+Nmap scan report for 192.168.56.101
+Host is up (0.0015s latency).
+Nmap scan report for 192.168.56.102
+Host is up (0.000053s latency).
+Nmap done: 256 IP addresses (2 hosts up) scanned in 23.33 seconds
+
+
+
+#Zadanie 3
+──(kali㉿kali)-[~]
+└─$ nmap -p- 192.168.56.101 
+Starting Nmap 7.92 ( https://nmap.org ) at 2023-07-01 05:35 EDT
+Nmap scan report for 192.168.56.101
+Host is up (0.00018s latency).
+Not shown: 65532 closed tcp ports (conn-refused)
+PORT   STATE SERVICE
+21/tcp open  ftp
+22/tcp open  ssh
+80/tcp open  http
+
+#Zadanie 4
+Nmap done: 1 IP address (1 host up) scanned in 14.80 seconds
+                                                                                                                   
+┌──(kali㉿kali)-[~]
+└─$  nmap -p- -sV 192.168.56.101/24 
+Starting Nmap 7.92 ( https://nmap.org ) at 2023-07-01 05:36 EDT
+Nmap scan report for 192.168.56.101
+Host is up (0.00020s latency).
+Not shown: 65532 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.5
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
